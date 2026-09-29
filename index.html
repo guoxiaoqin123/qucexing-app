@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#def6ef" />
+    <meta name="description" content="趣测星：发现更真实的自己" />
+    <title>趣测星</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="趣测星">
+      <section id="homeView" class="page is-active" aria-label="首页">
+        <header class="topbar">
+          <div>
+            <h1>趣测星</h1>
+            <p>10 秒，认识不一样的自己</p>
+          </div>
+          <div class="mini-app-menu" aria-label="小程序菜单">
+            <button type="button" aria-label="更多">•••</button>
+            <span aria-hidden="true"></span>
+            <button type="button" aria-label="关闭">−</button>
+            <span aria-hidden="true"></span>
+            <button type="button" class="menu-ring" aria-label="返回小程序列表">◎</button>
+          </div>
+        </header>
+
+        <article class="fortune-card" aria-labelledby="fortuneTitle">
+          <div class="fortune-head">
+            <div id="zodiacIcon" class="zodiac-icon" aria-hidden="true">♌</div>
+            <div class="fortune-title-wrap">
+              <h2 id="fortuneTitle">狮子座 · 今日运势 <span>火象</span></h2>
+              <time id="fortuneDate"></time>
+            </div>
+            <button id="switchZodiac" class="switch-button" type="button">切换 ›</button>
+          </div>
+
+          <div class="fortune-summary">
+            <span>综合</span>
+            <div class="stars" aria-label="综合运势三星半">☆ ☆ ☆ ☆ ☆</div>
+            <strong id="fortuneLevel">平稳</strong>
+          </div>
+
+          <div class="fortune-metrics">
+            <div>
+              <span class="metric-icon">♡</span>
+              <span class="metric-stars">☆ ☆ ☆ ☆ ☆</span>
+              <strong>顺遂</strong>
+            </div>
+            <div>
+              <span class="metric-icon">▣</span>
+              <span class="metric-stars">☆ ☆ ☆ ☆ ☆</span>
+              <strong>尚可</strong>
+            </div>
+            <div>
+              <span class="metric-icon">⊙</span>
+              <span class="metric-stars">☆ ☆ ☆ ☆ ☆</span>
+              <strong>顺遂</strong>
+            </div>
+          </div>
+
+          <div class="lucky-row">
+            <span>幸运色</span><b id="luckyColor">香槟金</b><span>幸运数字</span><b id="luckyNumber">28</b>
+          </div>
+
+          <p id="fortuneTip" class="fortune-tip">慢即是快，静能生慧。</p>
+          <ul class="fortune-advice">
+            <li><span>♡</span>别把玩笑当真。</li>
+            <li><span>▣</span>别在细节上纠结太久。</li>
+            <li><span>⊙</span>冲动消费先放购物车。</li>
+          </ul>
+        </article>
+
+        <div class="section-heading">
+          <h2>性格与人格</h2>
+          <p>认识最真实的自己</p>
+        </div>
+
+        <section class="test-list" aria-label="性格测试列表">
+          <button class="test-card" type="button" data-test="动物人格测试" data-color="#fff1d7">
+            <span class="test-icon icon-animal" aria-hidden="true">♙</span>
+            <span class="test-copy"><strong>动物人格测试</strong><small>已有 128.6 万人测试</small></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="test-card" type="button" data-test="MBTI 16型人格" data-color="#eaf0ff">
+            <span class="test-icon icon-mbti" aria-hidden="true">◖◗</span>
+            <span class="test-copy"><strong>MBTI 16型人格</strong><small>测测你是哪种人格</small></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="test-card" type="button" data-test="九型人格测试" data-color="#e2f8f3">
+            <span class="test-icon icon-nine" aria-hidden="true">◌</span>
+            <span class="test-copy"><strong>九型人格测试</strong><small>你是 9 种人格里的哪一型</small></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="test-card" type="button" data-test="大五人格测试" data-color="#fff4df">
+            <span class="test-icon icon-five" aria-hidden="true">⌁</span>
+            <span class="test-copy"><strong>大五人格测试</strong><small>测测你最突出的性格优势</small></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="test-card" type="button" data-test="气质类型测试" data-color="#e2f7ee">
+            <span class="test-icon icon-temper" aria-hidden="true">≋</span>
+            <span class="test-copy"><strong>气质类型测试</strong><small>你是哪种古典气质</small></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+        </section>
+      </section>
+
+      <section id="profileView" class="page profile-page" aria-label="我的">
+        <header class="profile-head">
+          <div class="avatar" aria-hidden="true">趣</div>
+          <h1>我的测试</h1>
+          <p>发现自己的每一种可能</p>
+        </header>
+        <div class="profile-panel">
+          <div><strong id="completedCount">0</strong><span>已完成</span></div>
+          <div><strong>5</strong><span>待探索</span></div>
+        </div>
+        <section class="history-section">
+          <h2>最近记录</h2>
+          <div id="emptyHistory" class="empty-history">还没有测试记录</div>
+          <ul id="historyList" class="history-list"></ul>
+        </section>
+      </section>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="nav-item is-active" type="button" data-view="homeView">
+          <span aria-hidden="true">⌂</span><strong>首页</strong>
+        </button>
+        <button class="nav-item" type="button" data-view="profileView">
+          <span aria-hidden="true">♙</span><strong>我的</strong>
+        </button>
+      </nav>
+
+      <div id="zodiacSheet" class="sheet-backdrop" hidden>
+        <section class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+          <div class="sheet-grabber" aria-hidden="true"></div>
+          <div class="sheet-head">
+            <h2 id="sheetTitle">选择你的星座</h2>
+            <button id="closeSheet" type="button" aria-label="关闭">×</button>
+          </div>
+          <div id="zodiacGrid" class="zodiac-grid"></div>
+        </section>
+      </div>
+
+      <div id="testDialog" class="sheet-backdrop" hidden>
+        <section class="test-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+          <button id="closeDialog" class="dialog-close" type="button" aria-label="关闭">×</button>
+          <div id="dialogIcon" class="dialog-icon" aria-hidden="true">✦</div>
+          <p>趣测星</p>
+          <h2 id="dialogTitle">测试名称</h2>
+          <p class="dialog-desc">凭第一感觉选择答案，看看真实的你。</p>
+          <button id="startTest" class="primary-button" type="button">开始测试</button>
+        </section>
+      </div>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
