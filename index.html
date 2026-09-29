@@ -113,7 +113,7 @@
         </header>
         <div class="profile-panel">
           <div><strong id="completedCount">0</strong><span>已完成</span></div>
-          <div><strong>5</strong><span>待探索</span></div>
+          <div><strong id="pendingCount">5</strong><span>待探索</span></div>
         </div>
         <section class="history-section">
           <h2>最近记录</h2>
@@ -152,6 +152,33 @@
           <button id="startTest" class="primary-button" type="button">开始测试</button>
         </section>
       </div>
+
+      <section id="quizScreen" class="quiz-screen" aria-label="测试答题" hidden>
+        <header class="quiz-header">
+          <button id="exitQuiz" type="button" aria-label="退出测试">×</button>
+          <strong id="quizTitle">测试名称</strong>
+          <span id="quizStep">1/5</span>
+        </header>
+        <div class="quiz-progress" aria-hidden="true"><span id="quizProgressBar"></span></div>
+
+        <div id="questionPanel" class="question-panel">
+          <p id="questionNumber">第 1 题</p>
+          <h2 id="questionText"></h2>
+          <div id="answerList" class="answer-list"></div>
+          <button id="previousQuestion" class="text-button" type="button">‹ 上一题</button>
+        </div>
+
+        <div id="resultPanel" class="result-panel" hidden>
+          <div class="result-mark" aria-hidden="true">✦</div>
+          <p>你的测试结果</p>
+          <h2 id="resultTitle"></h2>
+          <p id="resultDescription" class="result-description"></p>
+          <div class="result-actions">
+            <button id="finishTest" class="primary-button" type="button">完成</button>
+            <button id="restartTest" class="secondary-button" type="button">重新测试</button>
+          </div>
+        </div>
+      </section>
 
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
     </main>

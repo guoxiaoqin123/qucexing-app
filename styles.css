@@ -393,6 +393,141 @@ button { font: inherit; }
 .dialog-desc { margin: 0 0 22px; color: #7d8987; font-size: 13px; }
 .primary-button { width: 100%; min-height: 45px; border: 0; border-radius: 8px; background: #2e8275; color: white; font-weight: 700; cursor: pointer; }
 
+.quiz-screen {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  width: min(100%, 430px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 90% 4%, rgba(255, 255, 255, .74), transparent 24%),
+    linear-gradient(160deg, #dff6f0 0%, #f5fbf9 58%, #e6f5f1 100%);
+}
+
+.quiz-screen[hidden] { display: none; }
+
+.quiz-header {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  min-height: calc(58px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 15px 0;
+  background: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(14px);
+}
+
+.quiz-header button {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #53615f;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.quiz-header strong { overflow: hidden; font-size: 15px; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.quiz-header span { color: #71817e; font-size: 12px; text-align: right; }
+
+.quiz-progress { height: 4px; background: rgba(255, 255, 255, .75); }
+.quiz-progress span { display: block; width: 20%; height: 100%; background: #2f8a7c; transition: width .2s ease; }
+
+.question-panel {
+  padding: clamp(38px, 8vh, 72px) 22px calc(34px + env(safe-area-inset-bottom));
+}
+
+.question-panel > p,
+.result-panel > p:first-of-type {
+  margin: 0 0 10px;
+  color: #388476;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.question-panel h2 {
+  min-height: 68px;
+  margin: 0 0 28px;
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+.answer-list { display: grid; gap: 12px; }
+
+.answer-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 58px;
+  padding: 13px 16px;
+  border: 1px solid rgba(215, 229, 225, .9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .9);
+  color: #303936;
+  text-align: left;
+  line-height: 1.5;
+  box-shadow: 0 7px 20px rgba(44, 101, 91, .05);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+
+.answer-button::before {
+  display: grid;
+  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
+  margin-right: 11px;
+  place-items: center;
+  border: 1px solid #cbd8d5;
+  border-radius: 50%;
+  color: #71817e;
+  content: attr(data-letter);
+  font-size: 11px;
+}
+
+.answer-button:active,
+.answer-button.is-selected { border-color: #75b3a8; background: #eef9f6; transform: scale(.99); }
+.answer-button.is-selected::before { border-color: #2f8a7c; background: #2f8a7c; color: white; }
+
+.text-button {
+  display: block;
+  min-height: 44px;
+  margin: 23px auto 0;
+  border: 0;
+  background: transparent;
+  color: #71817e;
+  cursor: pointer;
+}
+
+.text-button:disabled { visibility: hidden; }
+
+.result-panel {
+  padding: clamp(52px, 11vh, 96px) 25px calc(40px + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.result-mark {
+  display: grid;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 21px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff0d8;
+  color: #bf7d29;
+  font-size: 34px;
+  box-shadow: 0 10px 28px rgba(167, 117, 51, .13);
+}
+
+.result-panel h2 { margin: 0 0 15px; font-size: 25px; }
+.result-description { max-width: 320px; min-height: 72px; margin: 0 auto; color: #65716f; font-size: 14px; line-height: 1.8; }
+.result-actions { display: grid; gap: 11px; margin-top: 35px; }
+.secondary-button { width: 100%; min-height: 45px; border: 1px solid #b9d4cf; border-radius: 8px; background: rgba(255, 255, 255, .66); color: #2e8275; font-weight: 700; cursor: pointer; }
+
+.history-list li small { display: block; margin-top: 5px; color: #7f8987; line-height: 1.5; }
+
 .toast {
   position: fixed;
   z-index: 80;
@@ -420,6 +555,7 @@ button { font: inherit; }
   .app-shell { min-height: calc(100dvh - 48px); border-radius: 24px; }
   .page { min-height: calc(100dvh - 48px); }
   .bottom-nav { bottom: 24px; border-radius: 0 0 24px 24px; }
+  .quiz-screen { top: 24px; bottom: 24px; min-height: calc(100dvh - 48px); border-radius: 24px; }
 }
 
 @media (max-width: 360px) {
